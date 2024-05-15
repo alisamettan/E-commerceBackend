@@ -46,9 +46,6 @@ public class AddressController {
     public Address update(@PathVariable Long id,@Validated @RequestBody AddressRequest addressRequest){
         Validation.checkId(id);
         Address existingAddress = addressService.findById(id);
-        if(existingAddress==null){
-            throw new ApiException("Address with given id not found: " + id,HttpStatus.NOT_FOUND);
-        }
         existingAddress= Converter.mapToAddress(addressRequest,existingAddress);
         Address updatedAddress=addressService.save(existingAddress);
         return updatedAddress;

@@ -1,6 +1,7 @@
 package com.workintech.ecommerce.dto;
 
 import com.workintech.ecommerce.entity.Address;
+import com.workintech.ecommerce.entity.Card;
 
 public class Converter {
     public static Address mapToAddress(AddressRequest addressRequest, Address address){
@@ -13,5 +14,13 @@ public class Converter {
         address.setDistrict(addressRequest.getDistrict());
         address.setPhone(addressRequest.getPhone());
         return address;
+    }
+
+    public static Card mapToCard(CardRequest cardRequest,Card card){
+        card.setNameOnCard(cardRequest.getNameOnCard());
+        card.setCardNo(cardRequest.getCardNo());
+        card.setExpireYear(cardRequest.getExpireYear());
+        card.setExpireMonth(cardRequest.getExpireMonth());
+        return card;
     }
 }

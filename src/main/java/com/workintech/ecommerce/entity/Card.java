@@ -2,6 +2,8 @@ package com.workintech.ecommerce.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,18 +20,22 @@ public class Card {
     private Long id;
 
     @Column(name = "card_no")
+    @Size(min = 16,max = 16,message = "card number should be 16 digit!")
     private String cardNo;
 
     @Column(name = "expire_month")
+    @Size(min = 1,max = 12,message = "expiration month should be selected a number between 1-12.")
     private int expireMonth;
 
     @Column(name = "expire_year")
+    @Min(2024)
     private int expireYear;
 
     @Column(name = "name_on_card")
+    @Size(min = 3)
     private String nameOnCard;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
