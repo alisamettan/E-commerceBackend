@@ -1,6 +1,7 @@
 package com.workintech.ecommerce.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Address {
     private Long id;
 
     @Column(name = "name")
+    @Size(min = 3,max = 50,message = "name length should be 3 at least")
     private String name;
 
     @Column(name = "surname")
@@ -34,10 +36,11 @@ public class Address {
     @Column(name = "district")
     private String district;
 
-    @Column(name = "neigborhood")
-    private String neigborhood;
+    @Column(name = "neighborhood")
+    private String neighborhood;
 
     @Column(name = "phone")
+    @Size(min = 11,max = 11)
     private String phone;
 
     @Column(name = "title")
