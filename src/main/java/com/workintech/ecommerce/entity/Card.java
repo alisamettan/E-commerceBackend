@@ -2,6 +2,7 @@ package com.workintech.ecommerce.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,8 @@ public class Card {
     private String cardNo;
 
     @Column(name = "expire_month")
-    @Size(min = 1,max = 12,message = "expiration month should be selected a number between 1-12.")
+    @Min(value = 1,message = "expiration month should be 1 at least")
+    @Max(value = 12,message = "expiration month should be 12 at most")
     private int expireMonth;
 
     @Column(name = "expire_year")

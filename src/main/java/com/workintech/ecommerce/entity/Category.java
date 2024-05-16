@@ -1,10 +1,13 @@
 package com.workintech.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -19,6 +22,7 @@ public class Category {
     private Long id;
 
     @Column(name = "code")
+    @Pattern(regexp = "^\\w+:\\w+$", message = "Code must follow the format 'prefix:suffix'")
     private String code;
 
     @Column(name = "title")
@@ -34,6 +38,15 @@ public class Category {
     @Column(name = "rating")
     private Double rating;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category",fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Product> productList;
+
+    public void addProduct(Product product){
+        if(productList==null){
+            productList=new ArrayList<>();
+
+        }
+        productList.add(product);
+    }
 }

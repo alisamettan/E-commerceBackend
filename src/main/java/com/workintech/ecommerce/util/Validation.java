@@ -9,4 +9,10 @@ public class Validation {
             throw new ApiException("id cannot be less than 0 or null: "+id, HttpStatus.BAD_REQUEST);
         }
     }
+
+    public static void checkGender(String gender){
+        if(!(gender.equalsIgnoreCase("k") || gender.equalsIgnoreCase("e"))){
+            throw new ApiException("gender should be k or e: "+gender,HttpStatus.BAD_REQUEST);
+        }
+    }
 }
