@@ -39,35 +39,35 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findAllByCategoryRatingDesc(long categoryId);
 
     //----By name asc desc
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name%")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%'))")
    List<Product> findAllByName(String name);
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% ORDER BY p.price ASC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) ORDER BY p.price ASC")
     List<Product> findAllByNamePriceAsc(String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% ORDER BY p.price DESC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) ORDER BY p.price DESC")
     List<Product> findAllByNamePriceDesc(String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% ORDER BY p.rating ASC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) ORDER BY p.rating ASC")
     List<Product> findAllByNameRatingAsc(String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% ORDER BY p.rating DESC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) ORDER BY p.rating DESC")
     List<Product> findAllByNameRatingDesc(String name);
 
     //---By name and category
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% AND p.category.id=:categoryId")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) AND p.category.id=:categoryId")
     List<Product> findAllByCategoryAndName(long categoryId,String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% AND p.category.id=:categoryId ORDER BY p.price ASC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) AND p.category.id=:categoryId ORDER BY p.price ASC")
     List<Product> findAllByCategoryAndNamePriceAsc(long categoryId,String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% AND p.category.id=:categoryId ORDER BY p.price DESC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) AND p.category.id=:categoryId ORDER BY p.price DESC")
     List<Product> findAllByCategoryAndNamePriceDesc(long categoryId,String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% AND p.category.id=:categoryId ORDER BY p.rating ASC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) AND p.category.id=:categoryId ORDER BY p.rating ASC")
     List<Product> findAllByCategoryAndNameRatingAsc(long categoryId,String name);
 
-    @Query("SELECT p FROM Product p WHERE p.name ILIKE %:name% AND p.category.id=:categoryId ORDER BY p.rating DESC")
+    @Query("SELECT p FROM Product p WHERE LOWER(p.name) ILIKE LOWER(CONCAT('%', :name, '%')) AND p.category.id=:categoryId ORDER BY p.rating DESC")
     List<Product> findAllByCategoryAndNameRatingDesc(long categoryId,String name);
 
 

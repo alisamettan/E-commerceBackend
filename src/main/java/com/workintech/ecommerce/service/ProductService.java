@@ -5,8 +5,9 @@ import com.workintech.ecommerce.entity.Product;
 import java.util.List;
 
 public interface ProductService {
+    List<Product> save(List<Product> products);
     List<Product> findAllProducts();
-    Product findByProductId(long productId);
+    Product findProductById(long productId);
     List<Product> findAllByPriceAsc();
     List<Product> findAllByPriceDesc();
     List<Product> findAllByRatingAsc();
