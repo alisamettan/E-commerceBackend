@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin("http://localhost:5175")
 public class ProductController {
 
     private ProductService productService;

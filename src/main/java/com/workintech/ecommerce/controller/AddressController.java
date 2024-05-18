@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/address")
+@CrossOrigin("http://localhost:5175")
 public class AddressController {
 
     private AddressService addressService;
