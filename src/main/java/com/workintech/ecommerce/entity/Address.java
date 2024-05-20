@@ -40,7 +40,7 @@ public class Address {
     private String neighborhood;
 
     @Column(name = "phone")
-    @Size(min = 11,max = 11)
+    @Size(min = 10,max = 10)
     private String phone;
 
     @Column(name = "title")
